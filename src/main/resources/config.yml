@@ -1,0 +1,41 @@
+settings:
+  currency-symbol: "$"
+  starting-balance: 0.0
+  save-on-disable: true
+  auto-create-player-account: true
+
+economy:
+  allow-negative-balances: false
+  max-balance: 1000000000000.0
+  decimal-places: 2
+
+auction-house:
+  enabled: true
+  max-listings-per-player: 5
+  minimum-price: 1.0
+  allow-self-purchase: false
+  remove-expired-on-startup: false
+  default-sort: newest
+
+bounties:
+  enabled: true
+  minimum-bounty: 1.0
+  allow-self-bounty: false
+  default-sort: highest
+  notify-target: true
+
+baltop:
+  enabled: true
+  default-size: 10
+  max-size: 100
+
+shop:
+  enabled: true
+  default-sort: lowest
+
+  # Set this to true if you want the plugin to wipe every shop category once
+  # on the next startup. After it runs, the plugin changes it back to false.
+  clear-categories-on-next-start: true
+
+  # Empty by default. No precreated categories.
+  categories: {}

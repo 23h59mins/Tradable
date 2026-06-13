@@ -1,0 +1,462 @@
+# File: src/main/resources/messages.yml
+
+prefix: "&6&lTradable &8» "
+
+general:
+  no-permission: "%prefix%&cYou do not have permission to do that."
+  player-only: "%prefix%&cOnly players can use this command."
+  invalid-player: "%prefix%&cPlease enter a valid player."
+  player-not-found: "%prefix%&cPlayer &e%player% &ccould not be found."
+  player-not-online: "%prefix%&cPlayer &e%player% &cis not online."
+  invalid-amount: "%prefix%&cInvalid amount: &e%input%&c."
+  amount-must-be-positive: "%prefix%&cThe amount must be greater than zero."
+  invalid-number: "%prefix%&cThat value must be a valid number."
+  invalid-slot: "%prefix%&cThat slot must be a positive whole number."
+  invalid-price: "%prefix%&cThat price must be a valid positive amount."
+  reload-success: "%prefix%&aTradable has been reloaded successfully."
+  reload-failed: "%prefix%&cTradable failed to reload. Check console for details."
+  command-error: "%prefix%&cSomething went wrong while executing that command."
+  menu-error: "%prefix%&cSomething went wrong while handling that menu."
+  not-your-menu: "%prefix%&cThat menu is not yours."
+  cancelled: "%prefix%&cAction cancelled."
+  usage:
+    header: "%prefix%&cUsage: &e%usage%"
+    example: "&8• &7Example: &e%example%"
+  hints:
+    compact-money: "&8• &7Compact money works too: &e1.5K&7, &e2M&7, &e3.25B"
+    category-spaces: "&8• &7Category names may contain spaces."
+    hold-item: "&8• &7Hold the target item in your main hand."
+    exact-item: "&8• &7Hold the exact item that was added to the shop."
+  sounds:
+    click: true
+    success: true
+    fail: true
+
+help:
+  divider: "&8&m----------------------------------------"
+  title: "%prefix%&fCommand Overview"
+  subtitle: "&7Tradable includes commands for regular players and admin management tools."
+  player-section-title: "&6&lAvailable to All Players"
+  admin-section-title: "&6&lAdmin Tools"
+  example-header: "&8  &7Examples:"
+  example-line: "&8   ↳ &e%example%"
+  note-line: "&8• &7%note%"
+  player-commands:
+    - "&8▪ &f/bal &8- &7Check your current balance."
+    - "&8▪ &f/baltop &8- &7Open the balance leaderboard."
+    - "&8▪ &f/shop &8- &7Browse the marketplace."
+    - "&8▪ &f/provide <player> <money> &8- &7Send money to another online player."
+    - "&8▪ &f/bounty &8- &7Open the bounty board."
+    - "&8▪ &f/bountyset <player> <money> &8- &7Place a bounty on a player."
+    - "&8▪ &f/ah &8- &7Open the auction house."
+    - "&8▪ &f/ahsell <money> &8- &7List the item in your main hand on the auction house."
+  player-examples:
+    - "/bal"
+    - "/shop"
+    - "/provide Notch 5K"
+    - "/bountyset Steve 25K"
+    - "/ahsell 100K"
+  admin-commands:
+    - "&8▪ &f/tradable addmoney [player] <money> &8- &7Add money to yourself or another player."
+    - "&8▪ &f/tradable minusmoney [player] <money> &8- &7Remove money from yourself or another player."
+    - "&8▪ &f/tradable addcategory <name> <slot> &8- &7Create a category or move an existing one."
+    - "&8▪ &f/tradable renamecategory <current name> <new name> &8- &7Rename an existing shop category."
+    - "&8▪ &f/tradable removecategory <name> &8- &7Delete a category."
+    - "&8▪ &f/tradable removeallcategory &8- &7Delete every shop category."
+    - "&8▪ &f/tradable additem <category> <slot> <price> &8- &7Add the held item to a shop category slot."
+    - "&8▪ &f/tradable removeitem &8- &7Remove matching shop entries for the held item."
+    - "&8▪ &f/tradable setprice <category> <price> &8- &7Set price by matching the held item."
+    - "&8▪ &f/tradable setprice <category> <slot> <price> &8- &7Set price directly by category slot."
+    - "&8▪ &f/tradable seticoncategory <category> &8- &7Use the held item as the category icon."
+    - "&8▪ &f/tradable reload &8- &7Reload config, messages, and storage files."
+  admin-examples:
+    - "/tradable addmoney 2.5K"
+    - "/tradable addmoney Notch 25K"
+    - "/tradable addcategory Blocks 1"
+    - "/tradable renamecategory Mob Drops Rare Drops"
+    - "/tradable additem Mob Drops 1 250"
+    - "/tradable setprice Mob Drops 2.5K"
+    - "/tradable reload"
+  notes:
+    - "Money supports compact values like &f1.5K&7, &f2M&7, &f3.25B&7."
+    - "Category names may contain spaces."
+    - "For shop item commands, hold the target item in your main hand."
+
+player-commands:
+  balance:
+    usage: "/bal"
+    current: "%prefix%&aYour current balance is &e$%balance%&a."
+    footer: "&8• &7Spend wisely, trade smart."
+
+  baltop:
+    usage: "/baltop"
+
+  shop:
+    usage: "/shop"
+    disabled: "%prefix%&cThe shop is currently unavailable."
+    disabled-footer: "&8• &7Please try again later."
+
+  provide:
+    usage: "/provide <player> <money>"
+    confirm-opened: "%prefix%&7Review the transfer and confirm it in the menu."
+    self: "%prefix%&cYou cannot send money to yourself."
+    insufficient: "%prefix%&cYou do not have enough funds for that transfer."
+    sent: "%prefix%&aSent &e$%amount% &ato &e%target%&a."
+    received: "%prefix%&aYou received &e$%amount% &afrom &e%sender%&a."
+    cancelled: "%prefix%&cTransfer cancelled."
+    target-offline: "%prefix%&cThat player is no longer online."
+    withdraw-failed: "%prefix%&cTransfer failed while withdrawing your funds."
+
+  bounty:
+    usage: "/bounty"
+
+  bountyset:
+    usage: "/bountyset <player> <money>"
+    self: "%prefix%&cYou cannot place a bounty on yourself."
+    invalid-target: "%prefix%&cThat player could not be found."
+    insufficient: "%prefix%&cYou do not have enough funds to place that bounty."
+    confirm-opened: "%prefix%&7Review the bounty details and confirm them in the menu."
+    placed: "%prefix%&aBounty placed successfully."
+    placed-target: "&8• &7Target: &e%target%"
+    placed-value: "&8• &7Value: &e$%amount%"
+    notify-target: "%prefix%&cA bounty has been placed on you."
+    notify-target-value: "&8• &7Value: &e$%amount%"
+    notify-target-footer: "&8• &8Stay sharp."
+    cancelled: "%prefix%&cBounty placement cancelled."
+    failed-create: "%prefix%&cBounty creation failed: &e%reason%"
+    withdraw-failed: "%prefix%&cBounty placement failed while withdrawing your funds."
+
+  auction-house:
+    usage: "/ah"
+    disabled: "%prefix%&cThe Auction House is currently unavailable."
+    disabled-footer: "&8• &7Please try again later."
+
+  ahsell:
+    usage: "/ahsell <money>"
+    hold-item: "%prefix%&cHold the item you want to list in your main hand."
+    below-minimum: "%prefix%&cThat listing is below the minimum price."
+    minimum-footer: "&8• &7Minimum required: &e$%minimum%"
+    listing-limit: "%prefix%&cYou have reached your Auction House listing limit."
+    listing-limit-footer: "&8• &7Used slots: &e%used%&7/&e%max%"
+    listed: "%prefix%&aYour item has been listed on the Auction House."
+    listed-item: "&8• &7Item: &e%item%"
+    listed-price: "&8• &7Price: &e$%price%"
+    listed-slots: "&8• &7Used slots: &e%used%&7/&e%max%"
+    failed: "%prefix%&cListing failed: &e%reason%"
+
+admin-commands:
+  addmoney:
+    usage: "/tradable addmoney [player] <money>"
+    success: "%prefix%&aAdded &e$%amount% &ato &e%target%&a."
+    notify-target: "%prefix%&aYour balance increased by &e$%amount%&a."
+
+  minusmoney:
+    usage: "/tradable minusmoney [player] <money>"
+    success: "%prefix%&aRemoved &e$%amount% &afrom &e%target%&a."
+    failed: "%prefix%&cFailed to remove money."
+    notify-target: "%prefix%&cYour balance decreased by &e$%amount%&c."
+
+  addcategory:
+    usage: "/tradable addcategory <name> <slot>"
+    invalid-slot: "%prefix%&cSlot must be a positive integer starting from 1."
+    invalid-slot-example: "&8• &7Example: &e/tradable addcategory Mob Drops 2"
+    empty-name: "%prefix%&cCategory name cannot be empty."
+    occupied: "%prefix%&cThat category slot is already used by &e%category%&c."
+    added: "%prefix%&aAdded category &e%category% &aat absolute slot &e%absolute_slot% &a(page &e%page%&a, slot &e%slot%&a)."
+    updated: "%prefix%&aUpdated category &e%category% &aat absolute slot &e%absolute_slot% &a(page &e%page%&a, slot &e%slot%&a)."
+    failed: "%prefix%&cFailed to save category. Check config.yml and console logs."
+
+  renamecategory:
+    usage: "/tradable renamecategory <current name> <new name>"
+    usage-footer: "&8• &7Both the current name and the new name may contain spaces."
+    not-found: "%prefix%&cThat category does not exist."
+    not-found-footer: "&8• &7Tried to find: &e%category%"
+    empty-new-name: "%prefix%&cThe new category name cannot be empty."
+    already-exists: "%prefix%&cA category with that name already exists."
+    already-exists-footer: "&8• &7Existing category: &e%category%"
+    data-missing: "%prefix%&cThe category data could not be loaded."
+    success: "%prefix%&aRenamed category &e%old_name% &ato &e%new_name%&a."
+    failed: "%prefix%&cFailed to rename category. Check config.yml and console logs."
+
+  removecategory:
+    usage: "/tradable removecategory <name>"
+    not-found: "%prefix%&cThat category does not exist."
+    not-found-footer: "&8• &7Tried to find: &e%category%"
+    success: "%prefix%&aRemoved category &e%category%&a."
+    failed: "%prefix%&cFailed to remove category. Check config.yml and console logs."
+
+  removeallcategory:
+    usage: "/tradable removeallcategory"
+    success: "%prefix%&aRemoved &e%count% &ashop categor%plural%."
+    plural-single: "y"
+    plural-multiple: "ies"
+
+  additem:
+    usage: "/tradable additem <category> <slot> <price>"
+    usage-footer: "&8• &7When replacing an existing item, price may be omitted to keep the current price."
+    category-not-found: "%prefix%&cThat category does not exist."
+    category-not-found-footer: "&8• &7Tried to find: &e%category%"
+    hold-item: "%prefix%&cHold the item in your main hand."
+    invalid-price: "%prefix%&cPrice must be a positive number."
+    existing-invalid-price: "%prefix%&cThe existing item has no valid price."
+    existing-invalid-price-footer: "&8• &7Use: &e/tradable additem %category% %slot% <price>"
+    new-item-needs-price: "%prefix%&cNew shop items must have a positive price."
+    new-item-needs-price-footer: "&8• &7Example: &e/tradable additem %category% %slot% 100"
+    added: "%prefix%&aAdded held item to &e%category% &aat absolute slot &e%absolute_slot% &a(page &e%page%&a, slot &e%slot%&a)."
+    replaced: "%prefix%&aReplaced item in &e%category% &aat absolute slot &e%absolute_slot% &a(page &e%page%&a, slot &e%slot%&a)."
+    price-footer: "&8• &7Price: &e$%price%"
+    failed: "%prefix%&cFailed to save item. Check config.yml and console logs."
+
+  removeitem:
+    usage: "/tradable removeitem"
+    hold-item: "%prefix%&cHold the item in your main hand."
+    no-categories: "%prefix%&cThere are no categories configured."
+    no-match: "%prefix%&cNo matching shop item was found."
+    success: "%prefix%&aRemoved &e%count% &amatching shop entr%plural%."
+    plural-single: "y"
+    plural-multiple: "ies"
+
+  setprice:
+    usage-held: "/tradable setprice <category> <price>"
+    usage-slot: "/tradable setprice <category> <slot> <price>"
+    invalid-syntax: "%prefix%&cInvalid setprice syntax."
+    held-item-footer: "&8• &7Hold the target shop item in your main hand."
+    held-example: "&8• &7Example: &e/tradable setprice Mob Drops 2.5K"
+    slot-example: "&8• &7Example: &e/tradable setprice Mob Drops 1 250"
+    category-not-found: "%prefix%&cThat category does not exist."
+    category-not-found-footer: "&8• &7Tried to find: &e%category%"
+    no-item-in-slot: "%prefix%&cNo shop item exists in that category slot."
+    hold-item: "%prefix%&cHold the target shop item in your main hand."
+    no-matching-item: "%prefix%&cNo matching shop item was found in category &e%category%&c."
+    no-matching-item-footer: "&8• &7Tip: hold the exact item you added to the shop."
+    slot-success: "%prefix%&aSet price of item in &e%category% &aslot &e%slot% &ato &e$%price%&a."
+    held-success: "%prefix%&aSet price of held item in &e%category% &ato &e$%price%&a."
+
+  seticoncategory:
+    usage: "/tradable seticoncategory <category>"
+    category-not-found: "%prefix%&cThat category does not exist."
+    category-not-found-footer: "&8• &7Tried to find: &e%category%"
+    hold-item: "%prefix%&cHold the item in your main hand."
+    success: "%prefix%&aSet icon for category &e%category%&a."
+    failed: "%prefix%&cFailed to save category icon. Check config.yml and console logs."
+
+  category-suggestions:
+    none: "&8• &7No categories currently exist."
+    list: "&8• &7Existing categories: &e%categories%"
+    did-you-mean: "&8• &7Did you mean: &e%category%&7?"
+
+economy:
+  compact-money-examples:
+    - "1K"
+    - "2.5K"
+    - "1M"
+    - "3.25B"
+
+auction-house:
+  menu:
+    title: "&e&lAuction House"
+    empty-name: "&eNo auctions listed"
+    empty-lore:
+      - "&7There are currently no items for sale."
+    listing-lore:
+      seller: "&7Seller: &f%seller%"
+      price: "&7Price: &6$%price%"
+      listed: "&7Listed: &f%date%"
+      buy: "&eLeft-Click to buy"
+      remove: "&cRight-Click to remove"
+    purchase:
+      own-listing: "%prefix%&cYou cannot buy your own listing."
+      failed: "%prefix%&cPurchase failed."
+      success: "%prefix%&aPurchased auction item for &e$%price%&a."
+    remove:
+      failed: "%prefix%&cCould not remove listing."
+      success: "%prefix%&aAuction listing removed."
+
+bounty:
+  menu:
+    title: "&c&lBounties"
+    empty-name: "&eNo active bounties"
+    empty-lore:
+      - "&7Nobody has a bounty right now."
+    entry-lore:
+      target: "&7Target: &f%target%"
+      amount: "&7Bounty: &6$%amount%"
+      placed-by: "&7Placed by: &f%setter%"
+      created: "&7Created: &f%created%"
+      updated: "&7Updated: &f%updated%"
+      sort-hint: "&eClick sort to cycle ordering"
+
+baltop:
+  menu:
+    title: "&6&lBalance Top"
+    empty-name: "&eNo balance data"
+    empty-lore:
+      - "&7No balances were found."
+    entry-name: "&6#%position% &f%player%"
+    entry-lore:
+      player: "&7Player: &f%player%"
+      balance: "&7Balance: &a$%balance%"
+      compact: "&7Compact: &f%compact%"
+      uuid: "&7UUID: &8%uuid%"
+
+shop:
+  menu:
+    title: "&a&lServer Shop"
+  category:
+    default-material: "CHEST"
+    display-name: "&6&l%category%"
+    lore:
+      - "&8&m--------------------"
+      - "&7Curated goods ready for trade"
+      - "&7Collection: &f%category%"
+      - ""
+      - "&eBrowse this collection."
+      - "&8Tradable Collection"
+      - "&8&m--------------------"
+  item:
+    decorated-name: "&6✦ &f%item% &6✦"
+    lore-with-original:
+      - "&8&m━━━━━━━━━━━━━━━━━━━━"
+      - "%original_lore%"
+      - ""
+      - "&6✦ &e&lPrice: &a$%price%"
+      - "&7Value shown in compact format."
+      - ""
+      - "&eClick to trade this item."
+      - "&8Tradable Shop"
+      - "&8&m━━━━━━━━━━━━━━━━━━━━"
+    lore-without-original:
+      - "&8&m━━━━━━━━━━━━━━━━━━━━"
+      - "&7A premium listing from the market."
+      - "&7Item: &f%item%"
+      - ""
+      - "&6✦ &e&lPrice: &a$%price%"
+      - "&7Value shown in compact format."
+      - ""
+      - "&eClick to trade this item."
+      - "&8Tradable Shop"
+      - "&8&m━━━━━━━━━━━━━━━━━━━━"
+
+gui:
+  controls:
+    previous-page:
+      name: "&ePrevious Page"
+      lore:
+        - "&7Browse the previous page."
+    next-page:
+      name: "&eNext Page"
+      lore:
+        - "&7Browse the next page."
+    sort:
+      name: "&eSort"
+      lore:
+        - "&7Current: &f%sort%"
+        - "&eClick to cycle"
+
+  confirm-transfer:
+    title: "&2&lConfirm Transfer"
+    header:
+      name: "&f&lTransfer Confirmation"
+      lore:
+        - "&7Review this payment before sending it."
+        - ""
+        - "&8Minimal, clear, and safe."
+    sender:
+      name: "&6&lFrom"
+      lore:
+        - "&7Sender: &f%sender%"
+        - "&7Current Balance: &a$%balance%"
+        - "&7After Transfer: %color%$%remaining%"
+    amount:
+      name: "&e&lAmount"
+      lore:
+        - "&7Transfer Value: &6$%amount%"
+        - ""
+        - "%status%"
+    target:
+      name: "&6&lTo"
+      lore:
+        - "&7Recipient: &f%target%"
+        - ""
+        - "%status%"
+    confirm:
+      name-enabled: "&a&lConfirm Transfer"
+      name-disabled: "&c&lCannot Confirm"
+      lore-enabled:
+        - "&7Send &6$%amount% &7to &f%target%"
+        - ""
+        - "&aClick to complete this transfer."
+      lore-disabled:
+        - "&7Send &6$%amount% &7to &f%target%"
+        - ""
+        - "&cResolve the issue shown above first."
+    cancel:
+      name: "&c&lCancel"
+      lore:
+        - "&7Close this menu"
+        - "&7without sending anything."
+
+  confirm-bounty:
+    title: "&4&lConfirm Bounty"
+    header:
+      name: "&f&lBounty Confirmation"
+      lore:
+        - "&7Review this bounty before placing it."
+        - ""
+        - "&8A clear final check before spending."
+    setter:
+      name: "&6&lPlaced By"
+      lore:
+        - "&7Setter: &f%setter%"
+        - "&7Current Balance: &a$%balance%"
+        - "&7After Placement: %color%$%remaining%"
+    amount:
+      name: "&e&lBounty Value"
+      lore:
+        - "&7Amount: &6$%amount%"
+        - ""
+        - "%status%"
+    target:
+      name: "&6&lTarget"
+      lore:
+        - "&7Player: &f%target%"
+        - ""
+        - "%status%"
+    confirm:
+      name-enabled: "&a&lConfirm Bounty"
+      name-disabled: "&c&lCannot Confirm"
+      lore-enabled:
+        - "&7Place a bounty of &6$%amount%"
+        - "&7on &f%target%"
+        - ""
+        - "&aClick to place this bounty."
+      lore-disabled:
+        - "&7Place a bounty of &6$%amount%"
+        - "&7on &f%target%"
+        - ""
+        - "&cYou need more funds first."
+    cancel:
+      name: "&c&lCancel"
+      lore:
+        - "&7Close this menu"
+        - "&7without placing the bounty."
+
+placeholderapi:
+  enabled: true
+  identifier: "tradable"
+  examples:
+    - "%tradable_balance%"
+    - "%tradable_balance_full%"
+    - "%tradable_balance_raw%"
+    - "%tradable_auction_count%"
+    - "%tradable_bounty_target_total%"
+    - "%tradable_baltop_position%"
+    - "%tradable_shop_category_count%"
+    - "%tradable_top_balance_name_1%"
+    - "%tradable_top_balance_value_1%"
+    - "%tradable_player_balance_Notch%"
+
+debug:
+  log-config-save-failures: true
+  log-command-errors: true
+  log-menu-errors: true

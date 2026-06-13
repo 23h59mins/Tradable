@@ -1,0 +1,72 @@
+name: Tradable
+version: '${version}'
+
+main: sphere.tradable.Tradable
+api-version: '1.21'
+
+authors: [Sphere]
+description: Economy, auction house, bounties, baltop, shop, and admin money commands.
+softdepend: [PlaceholderAPI]
+
+commands:
+  tradable:
+    description: Main admin command for Tradable.
+    usage: /tradable
+    permission: tradable.admin
+    permission-message: §cYou do not have permission to use this command.
+    aliases: [tr]
+
+  bal:
+    description: View your balance.
+    usage: /bal
+    aliases: [balance, money]
+
+  baltop:
+    description: Open the balance top menu.
+    usage: /baltop
+    aliases: [topbal, balancetop]
+
+  shop:
+    description: Open the server shop.
+    usage: /shop
+
+  provide:
+    description: Send money to another online player.
+    usage: /provide <player> <money>
+    aliases: [pay, givecash]
+
+  bountyset:
+    description: Place a bounty on a player.
+    usage: /bountyset <player> <money>
+    aliases: [setbounty]
+
+  bounty:
+    description: Open the bounty menu.
+    usage: /bounty
+    aliases: [bounties]
+
+  ah:
+    description: Open the auction house.
+    usage: /ah
+    aliases: [auctionhouse, auction]
+
+  ahsell:
+    description: List the item in your main hand on the auction house.
+    usage: /ahsell <money>
+    aliases: [sellah]
+
+permissions:
+  tradable.*:
+    description: Grants access to all Tradable permissions.
+    default: op
+    children:
+      tradable.admin: true
+      tradable.auction.bypasslimit: true
+
+  tradable.admin:
+    description: Allows use of Tradable admin commands.
+    default: op
+
+  tradable.auction.bypasslimit:
+    description: Allows a player to bypass the auction listing limit.
+    default: false
